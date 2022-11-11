@@ -1,0 +1,16 @@
+// import add from './components/add.vue';
+
+// let name = ref('');
+// let address = ref('');
+// let contactNo = ref('');
+// let email = ref('');
+// let country = ref('');
+// let state = ref('');
+
+let newObj = {name: name.value, address: address.value, contactNo: contactNo.value, email: email.value, country: country.value, state: state.value};
+
+
+<!-- <div>
+  <add :data="addresses" :dataFields="fields" @newObj="addAdd(newObj)" />
+  add
+</div> -->
