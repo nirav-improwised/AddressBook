@@ -78,7 +78,7 @@
   
   function removeAddress(obj) {
     addresses.value = addresses.value.filter((item) => item !== obj);
-    return addresses.value;
+    alert("Details deleted successfully")
   }
   
   function updateAddress(obj) {
