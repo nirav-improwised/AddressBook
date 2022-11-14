@@ -1,163 +1,46 @@
-<!-- <script setup>
-import { reactive } from "@vue/reactivity";
-
-const props = defineProps({
-    data: Array,
-    dataFields: Array,
-})
-
-const emit = defineEmits(['deleteResponse', 'updateResponse']);
-function emitDeleteObj(obj){
-    emit('deleteResponse', obj);
-}
-function emitUpdateObj(obj){
-    emit('response', obj);
-}
-
-</script>
-
 <template>
-
-    <table>
+  <section class="p-4">
+    <div class="container-fluid">
+      <table class="table table-bordered">
         <thead>
-        <tr>
-            <th v-for="(field, index) in props.dataFields" :key="index">
-                {{ field }}
+          <tr>
+            <th v-for="(field, index) in props.dataFields" :key="index" class="text-capitalize">
+              {{ field }}
             </th>
-        </tr>
+            <th>Delete</th>
+            <th>Update</th>
+          </tr>
         </thead>
-
-        <tbody v-if="props.data.length>0">
-        <tr v-for="(obj, index) in data" :key="index">
+    
+        <tbody v-if="props.data.length > 0">
+          <tr v-for="(obj, index) in data" :key="index">
             <td v-for="(objField, i) in dataFields" :key="i">
-                {{obj[objField]}}
+              {{ obj[objField] }}
             </td>
             <td>
-                <button class="btn btn-outline-success" @click="emitDeleteObj(obj)">Delete</button>
+              <button class="btn btn-outline-success" @click="emitDeleteObj(obj)">
+                Delete
+              </button>
             </td>
             <td>
-                <button class="btn btn-outline-success" @click="emitUpdateObj(obj)">Update</button>
+              <button class="btn btn-outline-success" @click="emitUpdateObj(obj)">
+                Update
+              </button>
             </td>
-        </tr>
+          </tr>
         </tbody>
-
+    
         <tbody v-else>
-            <tr>
-                <td colspan="6">
-                    No data found
-                </td>
-            </tr>
+          <tr>
+            <td colspan="6">No data found</td>
+          </tr>
         </tbody>
-    </table>
-
-</template>
-
-<style>
-table {
-  border: 2px solid #42b983;
-  border-radius: 3px;
-  background-color: #fff;
-}
-
-th {
-  background-color: #42b983;
-  color: rgba(255, 255, 255, 0.66);
-  cursor: pointer;
-  user-select: none;
-}
-
-td {
-  background-color: #f9f9f9;
-}
-
-th,
-td {
-  min-width: 120px;
-  padding: 10px 20px;
-}
-
-th.active {
-  color: #fff;
-}
-
-th.active .arrow {
-  opacity: 1;
-}
-</style> -->
-
-<template>
-    <table>
-      <thead>
-        <tr>
-          <th v-for="(field, index) in props.dataFields" :key="index">
-            {{ field }}
-          </th>
-          <th>delete</th>
-          <th>update</th>
-        </tr>
-      </thead>
-  
-      <tbody v-if="props.data.length > 0">
-        <tr v-for="(obj, index) in data" :key="index">
-          <td v-for="(objField, i) in dataFields" :key="i">
-            {{ obj[objField] }}
-          </td>
-          <td>
-            <button class="btn btn-outline-success" @click="emitDeleteObj(obj)">
-              Delete
-            </button>
-          </td>
-          <td>
-            <button class="btn btn-outline-success" @click="emitUpdateObj(obj)">
-              Update
-            </button>
-          </td>
-        </tr>
-      </tbody>
-  
-      <tbody v-else>
-        <tr>
-          <td colspan="6">No data found</td>
-        </tr>
-      </tbody>
-    </table>
+      </table>
+  </div>
+  </section>
   </template>
   
-  <style>
-  table {
-    border: 2px solid #42b983;
-    border-radius: 3px;
-    background-color: #fff;
-  }
-  
-  th {
-    background-color: #42b983;
-    color: rgba(255, 255, 255, 0.66);
-    cursor: pointer;
-    user-select: none;
-  }
-  
-  td {
-    background-color: #f9f9f9;
-  }
-  
-  th,
-  td {
-    min-width: 120px;
-    padding: 10px 20px;
-  }
-  
-  th.active {
-    color: #fff;
-  }
-  
-  th.active .arrow {
-    opacity: 1;
-  }
-  </style>
-  
   <script setup>
-  import { reactive } from "vue";
   
   const props = defineProps({
     data: Array,
