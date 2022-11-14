@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1 class="text-center my-4">Adress Book</h1>
     <add
       :defaultValues="defaultObj"
       @response="(newObj) => addAddress(newObj)"
@@ -17,7 +18,7 @@
 </template>
 
   <script setup>
-  import { ref, reactive } from "vue";
+  import { ref } from "vue";
   import list from "./components/list.vue";
   import add from "./components/add.vue";
   
@@ -62,7 +63,7 @@
   function addAddress(newObj) {
     let index = addresses.value.indexOf(newObj);
     if (index !== -1) {
-      alert("Update your old address?");
+      confirm("Are you sure you want to update details?");
       addresses[index].name = newObj.name;
       addresses[index].address = newObj.address;
       addresses[index].contactNo = newObj.contactNo;
@@ -71,19 +72,16 @@
       addresses[index].state = newObj.state;
     } else {
       addresses.value.push(newObj);
-      alert("new object added");
+      alert("Details added successfully");
     }
   }
   
   function removeAddress(obj) {
-    console.log(obj);
     addresses.value = addresses.value.filter((item) => item !== obj);
     return addresses.value;
   }
   
   function updateAddress(obj) {
     defaultObj.value = obj;
-    console.log("defaultObj--->", defaultObj.value);
   }
   </script>
-  
